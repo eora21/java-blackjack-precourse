@@ -15,10 +15,10 @@ public class BlackjackController {
     private final BlackjackService blackjackService = new BlackjackService();
 
     public void run() {
-        List<Player> players = setPlayer();
+        List<Player> players = setPlayers();
     }
 
-    private List<Player> setPlayer() {
+    private List<Player> setPlayers() {
         List<String> playerNames = getCorrectValue(() -> blackjackService.validPlayerNames(input.player()));
 
         return new ArrayList<Player>() {{
@@ -34,6 +34,7 @@ public class BlackjackController {
                 return supplier.get();
             } catch (IllegalArgumentException e) {
                 output.error(e.getMessage());
+                output.enter();
             }
         }
     }
