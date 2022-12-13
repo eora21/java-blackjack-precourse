@@ -1,6 +1,9 @@
 package controller;
 
+import domain.user.Player;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import service.BlackjackService;
 import view.Input;
 import view.Output;
@@ -12,10 +15,26 @@ public class BlackjackController {
     private final BlackjackService blackjackService = new BlackjackService();
 
     public void run() {
-        setPlayer();
+        List<Player> players = setPlayer();
     }
 
-    private void setPlayer() {
-        List<String> playerNames = blackjackService.validPlayerNames(input.player());
+    private List<Player> setPlayer() {
+        List<String> playerNames = getCorrectValue(() -> blackjackService.validPlayerNames(input.player()));
+
+        return new ArrayList<Player>() {{
+            for (String playerName : playerNames) {
+                add(getCorrectValue(() -> blackjackService.createPlayer(playerName, input.bettingMoney(playerName))));
+            }
+        }};
+    }
+
+    private <T> T getCorrectValue(Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                output.error(e.getMessage());
+            }
+        }
     }
 }
