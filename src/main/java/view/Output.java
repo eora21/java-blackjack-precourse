@@ -1,5 +1,10 @@
 package view;
 
+import domain.game.BlackJack;
+import domain.game.Rule;
+import domain.user.Player;
+import java.util.stream.Collectors;
+
 public class Output {
 
     public void requirePlayer() {
@@ -20,5 +25,14 @@ public class Output {
 
     public void enter() {
         System.out.println();
+    }
+
+    public void distribution(BlackJack blackJack) {
+        print(String.format("딜러와 %s에게 %d장을 나누었습니다.",
+                blackJack.getPlayers()
+                        .stream()
+                        .map(Player::getName)
+                        .collect(Collectors.joining(", ")),
+                Rule.START_DISTRIBUTION_COUNT.getValue()));
     }
 }
