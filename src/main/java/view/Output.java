@@ -10,6 +10,10 @@ public class Output {
         print(String.format("%s의 배팅 금액은?", playerName));
     }
 
+    public void error(String text) {
+        print(String.format("[ERROR] %s", text));
+    }
+
     private void print(String text) {
         System.out.println(text);
     }
