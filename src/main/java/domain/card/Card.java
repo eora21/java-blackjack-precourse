@@ -23,6 +23,10 @@ public class Card {
         return symbol == Symbol.ACE;
     }
 
+    public String getDistribution() {
+        return String.format("%s%s", symbol.getDistribution(), type.getDistribution());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
