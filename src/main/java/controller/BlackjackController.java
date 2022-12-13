@@ -1,5 +1,6 @@
 package controller;
 
+import domain.game.BlackJack;
 import domain.user.Player;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,8 @@ public class BlackjackController {
     private final BlackjackService blackjackService = new BlackjackService();
 
     public void run() {
-        List<Player> players = setPlayers();
+        BlackJack blackJack = blackjackService.newBlackJackGame(setPlayers());
+        cardDistribution(blackJack);
     }
 
     private List<Player> setPlayers() {
@@ -26,6 +28,11 @@ public class BlackjackController {
                 add(getCorrectValue(() -> blackjackService.createPlayer(playerName, input.bettingMoney(playerName))));
             }
         }};
+    }
+
+    private void cardDistribution(BlackJack blackJack) {
+        output.distribution(blackJack);
+        blackJack.cardDistribution();
     }
 
     private <T> T getCorrectValue(Supplier<T> supplier) {
