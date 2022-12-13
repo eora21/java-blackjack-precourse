@@ -8,20 +8,15 @@ import java.util.List;
 /**
  * 게임 참여자를 의미하는 객체
  */
-public class Player {
+public class Player extends Participant {
 
     private static final int EMPTY_MONEY = 0;
     private final String name;
     private final double bettingMoney;
-    private final List<Card> cards = new ArrayList<>();
 
     private Player(String name, double bettingMoney) {
         this.name = name;
         this.bettingMoney = bettingMoney;
-    }
-
-    public void addCard(Card card) {
-        cards.add(card);
     }
 
     public static Player newInstance(String name, double bettingMoney) {
@@ -32,4 +27,7 @@ public class Player {
         return new Player(name, bettingMoney);
     }
 
+    public String getName() {
+        return name;
+    }
 }
