@@ -1,5 +1,6 @@
 package service;
 
+import domain.user.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -15,5 +16,9 @@ public class BlackjackService {
         }
 
         return players;
+    }
+
+    public Player createPlayer(String playerName, int bettingMoney) {
+        return Player.newInstance(playerName, bettingMoney);
     }
 }
