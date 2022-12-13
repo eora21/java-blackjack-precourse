@@ -11,11 +11,10 @@ import java.util.List;
 public class Player extends Participant {
 
     private static final int EMPTY_MONEY = 0;
-    private final String name;
     private final double bettingMoney;
 
     private Player(String name, double bettingMoney) {
-        this.name = name;
+        super(name);
         this.bettingMoney = bettingMoney;
     }
 
@@ -25,9 +24,5 @@ public class Player extends Participant {
         }
 
         return new Player(name, bettingMoney);
-    }
-
-    public String getName() {
-        return name;
     }
 }

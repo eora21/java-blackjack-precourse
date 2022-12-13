@@ -3,12 +3,19 @@ package domain.user;
 import domain.card.Card;
 import domain.game.Rule;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Participant {
+
+    private final String name;
     private final List<Card> cards = new ArrayList<>();
     private int score = 0;
     private int aceCount = 0;
+
+    protected Participant(String name) {
+        this.name = name;
+    }
 
     public void addCard(Card card) {
         increaseScore(card);
@@ -32,5 +39,9 @@ public class Participant {
                         (Rule.MAX_SCORE.getValue() - score) / Rule.ACE_SCORE.getValue(),
                         aceCount
                 );
+    }
+
+    public String getName() {
+        return name;
     }
 }

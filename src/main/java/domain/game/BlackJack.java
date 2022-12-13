@@ -41,7 +41,11 @@ public class BlackJack {
         }
     }
 
+    public String getDealerName() {
+        return dealer.getName();
+    }
+
     public List<Player> getPlayers() {
-        return players;
+        return Collections.unmodifiableList(players);
     }
 }

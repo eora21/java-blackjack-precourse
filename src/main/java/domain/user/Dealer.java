@@ -12,7 +12,7 @@ public class Dealer extends Participant {
 
     private static final int MORE_CARD_SCORE = 16;
 
-    public Dealer() {}
-
-    // TODO 추가 기능 구현
+    public Dealer() {
+        super("딜러");
+    }
 }

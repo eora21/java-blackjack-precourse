@@ -28,7 +28,8 @@ public class Output {
     }
 
     public void distribution(BlackJack blackJack) {
-        print(String.format("딜러와 %s에게 %d장을 나누었습니다.",
+        print(String.format("%s와 %s에게 %d장을 나누었습니다.",
+                blackJack.getDealerName(),
                 blackJack.getPlayers()
                         .stream()
                         .map(Player::getName)
