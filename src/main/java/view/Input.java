@@ -21,11 +21,26 @@ public class Input {
         return playerNames;
     }
 
+    public int bettingMoney(String playerName) {
+        output.requireBettingMoney(playerName);
+        int bettingMoney = toInt(readLine());
+        output.enter();
+        return bettingMoney;
+    }
+
     private String readLine() {
         try {
             return reader.readLine();
         } catch (IOException e) {
             throw new IllegalArgumentException("입출력에 문제가 있습니다.");
+        }
+    }
+
+    private int toInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("입력을 정수로 전환할 수 없습니다.");
         }
     }
 }
