@@ -3,6 +3,7 @@ package domain.game;
 import domain.card.Card;
 import domain.card.CardFactory;
 import domain.user.Dealer;
+import domain.user.Participant;
 import domain.user.Player;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -24,19 +25,23 @@ public class BlackJack {
     }
 
     public void cardDistribution() {
-        dealerDistribution();
+        participantDistribution(dealer);
         playersDistribution();
     }
 
-    private void dealerDistribution() {
-        dealer.addCard(cards.remove());
-        dealer.addCard(cards.remove());
+    private void participantDistribution(Participant participant) {
+        for (int cnt = 0; cnt < Rule.START_DISTRIBUTION_COUNT.getValue(); cnt++) {
+            participant.addCard(cards.remove());
+        }
     }
 
     private void playersDistribution() {
         for (Player player : players) {
-            player.addCard(cards.remove());
-            player.addCard(cards.remove());
+            participantDistribution(player);
         }
+    }
+
+    public List<Player> getPlayers() {
+        return players;
     }
 }
