@@ -1,5 +1,6 @@
 package service;
 
+import domain.game.BlackJack;
 import domain.user.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,5 +21,9 @@ public class BlackjackService {
 
     public Player createPlayer(String playerName, int bettingMoney) {
         return Player.newInstance(playerName, bettingMoney);
+    }
+
+    public BlackJack newBlackJackGame(List<Player> setPlayers) {
+        return new BlackJack(setPlayers);
     }
 }
