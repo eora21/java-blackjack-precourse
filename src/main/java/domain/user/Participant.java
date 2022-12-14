@@ -44,4 +44,8 @@ public class Participant {
     public String getName() {
         return name;
     }
+
+    public List<Card> getCards() {
+        return Collections.unmodifiableList(cards);
+    }
 }
