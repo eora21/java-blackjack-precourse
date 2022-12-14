@@ -1,9 +1,8 @@
 package view;
 
+import domain.dto.CardStatus;
 import domain.game.BlackJack;
 import domain.game.Rule;
-import domain.user.Player;
-import java.util.stream.Collectors;
 
 public class Output {
 
@@ -30,10 +29,14 @@ public class Output {
     public void distribution(BlackJack blackJack) {
         print(String.format("%s와 %s에게 %d장을 나누었습니다.",
                 blackJack.getDealerName(),
-                blackJack.getPlayers()
-                        .stream()
-                        .map(Player::getName)
-                        .collect(Collectors.joining(", ")),
+                String.join(", ", blackJack.getPlayerNames()),
                 Rule.START_DISTRIBUTION_COUNT.getValue()));
+    }
+
+    public void cardState(BlackJack blackJack) {
+        for (CardStatus cardStatus : blackJack.getAllCardStatus()) {
+            print(String.format("%s: %s", cardStatus.getName(),
+                    String.join(", ", cardStatus.getCardDescriptions())));
+        }
     }
 }
