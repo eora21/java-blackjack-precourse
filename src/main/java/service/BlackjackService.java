@@ -26,4 +26,8 @@ public class BlackjackService {
     public BlackJack newBlackJackGame(List<Player> setPlayers) {
         return new BlackJack(setPlayers);
     }
+
+    public void cardDistribution(BlackJack blackJack) {
+        blackJack.cardDistribution();
+    }
 }
