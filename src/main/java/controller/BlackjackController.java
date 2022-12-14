@@ -32,7 +32,8 @@ public class BlackjackController {
 
     private void cardDistribution(BlackJack blackJack) {
         output.distribution(blackJack);
-        blackJack.cardDistribution();
+        blackjackService.cardDistribution(blackJack);
+        output.cardState(blackJack);
     }
 
     private <T> T getCorrectValue(Supplier<T> supplier) {
